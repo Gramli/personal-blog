@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PersonalBlog.DataProvider;
 
-namespace personal_blog_service.Controllers
+namespace PersonalBlog.Service.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -17,15 +18,18 @@ namespace personal_blog_service.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IDbContext _dbContext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IDbContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var con = _dbContext.ConnectionString;
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

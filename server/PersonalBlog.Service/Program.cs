@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace personal_blog_service
+namespace PersonalBlog.Service
 {
     public class Program
     {

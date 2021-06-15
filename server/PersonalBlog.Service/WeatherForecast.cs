@@ -1,6 +1,6 @@
 using System;
 
-namespace personal_blog_service
+namespace PersonalBlog.Service
 {
     public class WeatherForecast
     {
