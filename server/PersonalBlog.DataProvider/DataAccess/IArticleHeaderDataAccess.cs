@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PersonalBlog.DataModel;
 
 namespace PersonalBlog.DataProvider.DataAccess
 {
-    interface IArticleHeaderDataAccess
+    public interface IArticleHeaderDataAccess
     {
+        Task<IEnumerable<ArticleHeader>> Fetch();
     }
 }

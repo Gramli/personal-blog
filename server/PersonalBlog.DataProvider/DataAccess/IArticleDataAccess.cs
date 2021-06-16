@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using PersonalBlog.DataModel;
 
 namespace PersonalBlog.DataProvider.DataAccess
 {
-    class IArticleDataAccess
+    public interface IArticleDataAccess
     {
+        Task<Article> GetArticle(int articleId);
     }
 }
