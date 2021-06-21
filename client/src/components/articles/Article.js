@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
+import Container from "../ui/Container";
 
 const Article = () =>{
   
   let { articleId } = useParams();
 
   return (
-    <div>
+    <Container>
       <h3>{articleId}</h3>
-    </div>
+    </Container>
     )
 }
 

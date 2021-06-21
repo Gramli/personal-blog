@@ -1,7 +1,8 @@
-import Container from "./ui/Container";
-import ArticleHeaderList from '../components/articles/ArticleHeadersList';
+import ArticleFilter from "../filter-articles/ArticleFilter";
+import Container from "../ui/Container";
+import ArticleHeaderList from "./ArticleHeadersList";
 
-const Home = () =>{
+const Articles = () =>{
 
     var articles = [
         {
@@ -22,13 +23,12 @@ const Home = () =>{
       }
     ];
 
-
-    return(
-        <Container>
-            <h3>Newest</h3>
-            <ArticleHeaderList articles={articles}/>
-        </Container>
+  return (
+    <Container>
+        <ArticleFilter/>
+        <ArticleHeaderList articles={articles}/>
+    </Container>
     )
 }
 
-export default Home;
+export default Articles;

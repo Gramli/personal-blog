@@ -1,9 +1,10 @@
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from './components/Navigation/Header';
+import Header from './components/navigation/Header';
 import Home from './components/Home';
-import ArticleHeaderList from './components/articles/ArticleHeadersList';
 import Article from './components/articles/Article';
+import Articles from './components/articles/Articles';
+import AddArticle from './components/add-article/AddArticle';
 
 function App() {
   return (
@@ -13,11 +14,14 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/articles/:articleId">
-            <Article />
+          <Route exact path="/articles">
+            <Articles />
           </Route>
-          <Route path="/articles">
-            <ArticleHeaderList />
+          <Route path="/addArticle">
+            <AddArticle />
+          </Route>
+          <Route path="/:articleId">
+            <Article />
           </Route>
         </Switch>
       </BrowserRouter>
