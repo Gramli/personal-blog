@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Article from './components/articles/Article';
 import Articles from './components/articles/Articles';
 import AddArticle from './components/add-article/AddArticle';
+import ArticleAdministration from './components/administration/ArticleAdministration';
 
 function App() {
   return (
@@ -17,7 +18,10 @@ function App() {
           <Route exact path="/articles">
             <Articles />
           </Route>
-          <Route path="/addArticle">
+          <Route exact path="/administration">
+            <ArticleAdministration />
+          </Route>
+          <Route path="/administration/addArticle">
             <AddArticle />
           </Route>
           <Route path="/:articleId">

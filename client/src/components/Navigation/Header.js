@@ -40,7 +40,7 @@ const Header = () => {
             <Link to="/articles">Articles</Link>
           </li>
           <li>
-            <Link to="/addArticle">Add Article</Link>
+            <Link to="/administration">Administration</Link>
           </li>
         </ul>
       </StyledNav>

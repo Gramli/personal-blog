@@ -21,7 +21,7 @@ const ArticleFilter = (props) => {
   return (
     <Container center={true}>
       <SearchInput value={inputValue} onChange={inputChangeHandler} type="text"></SearchInput>
-      <Button onClick={fetchArticles}>Search</Button>
+      <Button width="100%" onClick={fetchArticles}>Search</Button>
     </Container>
   );
 };
