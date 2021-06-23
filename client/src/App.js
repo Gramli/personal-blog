@@ -4,7 +4,7 @@ import Header from './components/navigation/Header';
 import Home from './components/Home';
 import Article from './components/articles/Article';
 import Articles from './components/articles/Articles';
-import AddArticle from './components/add-article/AddArticle';
+import AddArticle from './components/add-edit-article/AddArticle';
 import ArticleAdministration from './components/administration/ArticleAdministration';
 
 function App() {

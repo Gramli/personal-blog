@@ -1,11 +1,11 @@
 import Container from "../ui/Container";
-import AddArticleForm from "./AddArticleForm";
+import ArticleForm from "../article-forms/ArticleForm";
 
 const AddArticle = () =>{
   return (
     <Container>
-      <h3>Article Form</h3>
-      <AddArticleForm/>
+      <h3>Add New Article</h3>
+      <ArticleForm/>
     </Container>
     )
 }

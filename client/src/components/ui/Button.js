@@ -7,6 +7,7 @@ const Button = styled.button`
   padding: 1em 2em 1em 2em ;
   border: 0;
   width: ${props=> props.width || "auto"};
+  margin: ${props=> props.margin || "auto"};
 
 &:hover{
     background: ${props => !props.primary ? "#1d9410" : "transparent"};

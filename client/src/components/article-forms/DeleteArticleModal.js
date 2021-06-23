@@ -7,10 +7,12 @@ const DeleteArticleModal = (props) => {
   const portalElement = document.getElementById("overlays");
   return (
     <>
-      {ReactDOM.createPortal(<Backdrop onClick={props.OnCancel}/>, portalElement)}
+      {ReactDOM.createPortal(<Backdrop onClick={props.onDeleteCancel}/>, portalElement)}
       {ReactDOM.createPortal(<Modal>
-          <h3>Modal</h3>
-          <Button>Ahoj</Button>
+          <h3>Delete Article</h3>
+          <p>Do you really want to delete article: {props.articleName}</p>
+          <Button margin="1em" onClick={props.onDelete}>Ok</Button>
+          <Button margin="1em" onClick={props.onDeleteCancel}>Cancel</Button>
       </Modal>, portalElement)}
     </>
   );

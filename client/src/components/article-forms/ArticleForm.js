@@ -6,13 +6,17 @@ import Section from "../ui/Section";
 import TextArea from "../ui/TextArea";
 import DeleteArticleModal from "./DeleteArticleModal";
 
-const AddArticleForm = () => {
+const ArticleForm = (props) => {
 
   const [deleteState, setDeleteState] = useState(false);
+  const editState = props.article == null;
 
+  const onDeleteArticleHandler = () => {
+    setDeleteState(false);
+  };
   return (
     <>
-    {deleteState && <DeleteArticleModal/>}
+    {deleteState && editState && <DeleteArticleModal articleName={props.article.name} onDelete={onDeleteArticleHandler} onDeleteCancel={() => setDeleteState(false)}/>}
     <form>
       <section>
         <Label>Article Name</Label>
@@ -34,7 +38,7 @@ const AddArticleForm = () => {
         <TextArea height="25em"/>
       </section>
       <Section>
-        <Button type="button" onClick={() => setDeleteState(true)} width="50%">Delete</Button>
+        {editState && <Button type="button" onClick={() => setDeleteState(true)} width="50%">Delete</Button>}
         <Button type="button" width="50%">Save</Button>
       </Section>
       <Section>
@@ -45,4 +49,4 @@ const AddArticleForm = () => {
   );
 };
 
-export default AddArticleForm;
+export default ArticleForm;
