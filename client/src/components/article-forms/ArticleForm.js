@@ -9,7 +9,7 @@ import DeleteArticleModal from "./DeleteArticleModal";
 const ArticleForm = (props) => {
 
   const [deleteState, setDeleteState] = useState(false);
-  const editState = props.article == null;
+  const editState = props.article != null;
 
   const onDeleteArticleHandler = () => {
     setDeleteState(false);
@@ -20,11 +20,11 @@ const ArticleForm = (props) => {
     <form>
       <section>
         <Label>Article Name</Label>
-        <FormInput type="text" />
+        <FormInput type="text" value={ editState ? props.article.name : ""}/>
       </section>
       <section>
         <Label>Article Description</Label>
-        <TextArea />
+        <TextArea value={ editState ? props.article.description : ""}/>
       </section>
       <section>
         <Label>Keywords</Label>
@@ -35,7 +35,7 @@ const ArticleForm = (props) => {
       </Section>
       <section>
         <Label>Content</Label>
-        <TextArea height="25em"/>
+        <TextArea height="25em" value={ editState ? props.article.content : ""}/>
       </section>
       <Section>
         {editState && <Button type="button" onClick={() => setDeleteState(true)} width="50%">Delete</Button>}

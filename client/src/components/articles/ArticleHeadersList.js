@@ -6,14 +6,15 @@ const ArticleHeaderList = (props) => {
 
   useRouteMatch();
 
-  let content = <p>Search Articles!</p>;
+  let content = <p>No Data!</p>;
 
   if(props.articles){
     content = props.articles.map((item) => (
       <ArticleHeader
-        to={`${item.ArticleId}`}
+        to={`${item.articleId}`}
         name={item.name}
         key={item.id}
+        articleId={item.articleId}
         description={item.description}
         created={item.created}
         keywords={item.keywords}
