@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataAccess\MongoDB\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PersonalBlog.DataModel\PersonalBlog.DataModel.csproj" />
   </ItemGroup>
 

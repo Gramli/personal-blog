@@ -19,5 +19,13 @@ namespace PersonalBlog.DataProvider.DataAccess.MSSQL
             var query = "select * from ArticleHeader";
             return await connection.QueryAsync<ArticleHeader>(query);
         }
+
+        public async Task<IEnumerable<ArticleHeader>> FetchNotSubmited()
+        {
+            using var connection = _dbContext.CreateDbConnection();
+            var query = @"select ArticleHeader.* from ArticleHeader 
+                          join Article on ArticleHeader.ArticleId = Article.Id";
+            return await connection.QueryAsync<ArticleHeader>(query);
+        }
     }
 }
