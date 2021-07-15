@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Article from "../../model/ArticleContent";
 import Button from "../ui/Button";
 import FormInput from "../ui/FormInput";
 import Label from "../ui/Label";
@@ -6,7 +7,7 @@ import Section from "../ui/Section";
 import TextArea from "../ui/TextArea";
 import DeleteArticleModal from "./DeleteArticleModal";
 
-const ArticleForm = (props) => {
+const ArticleForm: React.FC<{article: Article}> = (props) => {
 
   const [deleteState, setDeleteState] = useState(false);
   const editState = props.article != null;

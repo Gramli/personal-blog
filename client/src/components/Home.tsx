@@ -1,18 +1,19 @@
 import Container from "./ui/Container";
-import ArticleHeaderList from "../components/articles/ArticleHeadersList";
+import ArticleHeaderList from "./articles/ArticleHeadersList";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import ArticleHeader from "../model/ArticleHeader";
 
-const Home = () => {
+const Home: React.FC = () => {
 
-  const [articles, setArticles] = useState();
+  const [articles, setArticles] = useState(new Array<ArticleHeader>());
   const [isLoading, setIsLoading] = useState(true);
 
- const fetchArticles = useCallback(async () => {
+ const fetchArticles = useCallback(async (): Promise<void> => {
    const result = await axios.get(`https://localhost:44378/Articles`);
     setArticles(result.data);
     setIsLoading(false);
- });
+ }, []);
 
   useEffect(() =>{
     fetchArticles();

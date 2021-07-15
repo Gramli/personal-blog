@@ -1,20 +1,18 @@
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import SearchInput from "../ui/SearchInput";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const ArticleFilter = (props) => {
+const ArticleFilter: React.FC<{onFetch: (text:string) => void}> = (props) => {
 
     const [inputValue, setInputValue] = useState('');
 
-    const inputChangeHandler = (event)=> {
+    const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>)=> {
         setInputValue(event.target.value);
     };
 
     const fetchArticles = ()=>{
-
         console.log(inputValue);
-
         //props.onFetch();
     };
 

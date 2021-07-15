@@ -3,20 +3,21 @@ import Container from "../ui/Container";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import parse from 'html-react-parser'
+import ArticleM from "../../model/Article";
 
-const Article = () =>{
+const Article: React.FC = () =>{
   
-  let { articleId } = useParams();
+  let { articleId } = useParams<{articleId?: string}>();
 
-  const [article, setArticle] = useState();
+  const [article, setArticle] = useState(new ArticleM());
   const [isLoading, setIsLoading] = useState(false);
 
- const fetchArticle = useCallback(async () => {
-   setIsLoading(true);
-   const result = await axios.get(`https://localhost:44378/${articleId}`);
+ const fetchArticle = useCallback(async (): Promise<void> => {
+    setIsLoading(true);
+    const result = await axios.get(`https://localhost:44378/${articleId}`);
     setArticle(result.data);
     setIsLoading(false);
- });
+ }, []);
 
  useEffect(() =>{
   fetchArticle();

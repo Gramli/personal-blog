@@ -1,12 +1,16 @@
 import { useRouteMatch } from "react-router-dom";
+import ArticleHeaderM from "../../model/ArticleHeader";
 import Container from "../ui/Container";
 import ArticleHeader from "./ArticleHeader";
 
-const ArticleHeaderList = (props) => {
+const ArticleHeaderList: React.FC<{
+  articles:ArticleHeaderM[]
+}> = (props) => {
 
   useRouteMatch();
 
-  let content = <p>No Data!</p>;
+  let content: JSX.Element[];
+  content = [<p>No Data!</p>];
 
   if(props.articles){
     content = props.articles.map((item) => (
@@ -17,9 +21,8 @@ const ArticleHeaderList = (props) => {
         articleId={item.articleId}
         description={item.description}
         created={item.created}
-        keywords={item.keywords}
-      />
-    ))};
+        keywords={item.keywords} />
+    ));};
 
   return (
     <Container>

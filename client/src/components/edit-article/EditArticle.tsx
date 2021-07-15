@@ -3,20 +3,21 @@ import { useCallback, useEffect, useState } from "react";
 import Container from "../ui/Container";
 import ArticleForm from "../article-forms/ArticleForm";
 import { useParams } from "react-router";
+import ArticleContent from "../../model/ArticleContent";
 
-const EditArticle = () =>{
+const EditArticle: React.FC = () =>{
 
-  let { articleId } = useParams();
+  let { articleId } = useParams<{articleId?: string}>();
 
-  const [article, setArticle] = useState();
+  const [article, setArticle] = useState(new ArticleContent);
   const [isLoading, setIsLoading] = useState(false);
 
- const fetchArticle = useCallback(async () => {
+ const fetchArticle = useCallback(async (): Promise<void> => {
    setIsLoading(true);
    const result = await axios.get(`https://localhost:44378/${articleId}`);
     setArticle(result.data);
     setIsLoading(false);
- });
+ }, []);
 
  useEffect(() =>{
   fetchArticle();
