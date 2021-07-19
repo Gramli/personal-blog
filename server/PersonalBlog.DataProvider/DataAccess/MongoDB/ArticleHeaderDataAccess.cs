@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using PersonalBlog.DataModel;
+using PersonalBlog.DataProvider.DataAccess.MongoDB.ModelExtensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,28 +17,30 @@ namespace PersonalBlog.DataProvider.DataAccess.MongoDB
 
         public Task<IEnumerable<ArticleHeader>> Fetch()
         {
-            return Task.Factory.StartNew(() =>
-            {
-                var filter = Builders<ArticleHeader>.Filter.Empty;
-                return _mongoDbContext.GetDatabase().GetCollection<ArticleHeader>("ArticleHeaders").Find(filter)
-                    .Limit(10).ToEnumerable();
-            });
+            return FetchWithSubmitedFiler(true);
         }
 
         public Task<IEnumerable<ArticleHeader>> FetchNotSubmited()
         {
+            return FetchWithSubmitedFiler(false);
+        }
+
+        private Task<IEnumerable<ArticleHeader>> FetchWithSubmitedFiler(bool submited)
+        {
             return Task.Factory.StartNew(() =>
             {
-                var articleFilter = Builders<Article>.Filter.Eq("Submited", false);
-                var articleIds = _mongoDbContext.GetDatabase().GetCollection<Article>("ArticleHeaders")
-                    .Find(articleFilter)
-                    .Project(item => new { item.Id})
-                    .ToList()
-                    .Select(item => item.Id);
+                var filter = Builders<MongoArticleHeader>.Filter.Eq("Submited", submited);
+                return _mongoDbContext.GetDatabase().GetCollection<MongoArticleHeader>("ArticleHeaders").Find(filter)
+                    .Limit(10).ToEnumerable().Cast<ArticleHeader>();
+            });
+        }
 
-                var filter = Builders<ArticleHeader>.Filter.AnyIn("ArticleId", articleIds);
-                return _mongoDbContext.GetDatabase().GetCollection<ArticleHeader>("ArticleHeaders").Find(filter)
-                    .Limit(10).ToEnumerable();
+        public Task<ArticleHeader> Get(int id)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                var filter = Builders<MongoArticleHeader>.Filter.Eq("ArticleHeaderId", id);
+                return (ArticleHeader)_mongoDbContext.GetDatabase().GetCollection<MongoArticleHeader>("ArticleHeaders").Find(filter).Single();
             });
         }
     }

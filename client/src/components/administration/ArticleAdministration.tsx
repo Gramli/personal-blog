@@ -6,6 +6,7 @@ import ArticleHeader from "../../model/ArticleHeader";
 import ArticleHeaderList from "../articles/ArticleHeadersList";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
+import Loading from "../ui/Loading";
 
 const ArticleAdministration: React.FC = () => {
 
@@ -14,7 +15,7 @@ const ArticleAdministration: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
  const fetchArticles = useCallback(async (): Promise<void> => {
-   const result = await axios.get(`https://localhost:44378/Articles`);
+   const result = await axios.get(`https://localhost:44378/NotSubmited`);
     setArticles(result.data);
     setIsLoading(false);
  }, []);
@@ -23,13 +24,23 @@ const ArticleAdministration: React.FC = () => {
     fetchArticles();
   },[])
 
+  let content = <p>No Article</p>;
+
+if (isLoading) {
+  content = <Loading/>;
+}
+
+if(articles.length > 0){
+  content = <ArticleHeaderList articles={articles}/>
+}
+
   return (
     <Container>
       <Link to={`${path}/addArticle`}>
         <Button width="100%">Add New Article</Button>
       </Link>
       <h3>In Development</h3>
-      <ArticleHeaderList articles={articles}/>
+      {content}
     </Container>
   );
 };

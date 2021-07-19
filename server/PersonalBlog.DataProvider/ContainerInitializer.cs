@@ -1,5 +1,4 @@
 ﻿using PersonalBlog.DataProvider.DataAccess;
-using PersonalBlog.DataProvider.DataAccess.MSSQL;
 using SimpleInjector;
 
 namespace PersonalBlog.DataProvider
@@ -9,8 +8,15 @@ namespace PersonalBlog.DataProvider
         public static void InitializeDataProvider(this Container container, string connectionString)
         {
             container.Register<IDbContext>( () => new MSSQLDbContext(connectionString));
-            container.Register<IArticleHeaderDataAccess, ArticleHeaderDataAccess>();
-            container.Register<IArticleDataAccess, ArticleDataAccess>();
+            container.Register<IArticleHeaderDataAccess, DataAccess.MSSQL.ArticleHeaderDataAccess>();
+            container.Register<IArticleDataAccess, DataAccess.MSSQL.ArticleDataAccess>();
+        }
+
+        public static void InitializeMongoDBDataProvider(this Container container, string connectionString)
+        {
+            container.Register<IMongoDbContext>(() => new MongoDbContext(connectionString), Lifestyle.Singleton);
+            container.Register<IArticleHeaderDataAccess, DataAccess.MongoDB.ArticleHeaderDataAccess>();
+            container.Register<IArticleDataAccess, DataAccess.MongoDB.ArticleDataAccess>();
         }
     }
 }

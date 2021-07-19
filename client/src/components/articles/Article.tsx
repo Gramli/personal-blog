@@ -4,12 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import parse from 'html-react-parser'
 import ArticleM from "../../model/Article";
+import Loading from "../ui/Loading";
 
 const Article: React.FC = () =>{
   
   let { articleId } = useParams<{articleId?: string}>();
 
-  const [article, setArticle] = useState(new ArticleM());
+  const [article, setArticle] = useState<ArticleM | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
  const fetchArticle = useCallback(async (): Promise<void> => {
@@ -21,16 +22,17 @@ const Article: React.FC = () =>{
 
  useEffect(() =>{
   fetchArticle();
-},[fetchArticle])
+},[])
 
 let content = <p>No Article</p>;
 
 if (isLoading) {
-  content = <p>Loading...</p>;
+  content = <Loading/>;
 }
 
 if(article){
-  content = <><h3>{article.name}</h3>
+  content = <>
+  <h1>{article.name}</h1>
   <p>{article.description}</p>
   {parse(article.content)}
   </>

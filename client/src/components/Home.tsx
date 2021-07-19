@@ -19,6 +19,16 @@ const Home: React.FC = () => {
     fetchArticles();
   },[])
 
+  let content = <p>No Article</p>;
+
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  }
+  
+  if(articles.length > 0){
+    content = <ArticleHeaderList articles={articles}/>
+  }
+
   return (
     <Container>
       <section>
@@ -27,7 +37,7 @@ const Home: React.FC = () => {
       </section>
       <section>
         <h3>Newest Articles</h3>
-        <ArticleHeaderList articles={articles} />
+        {content}
       </section>
     </Container>
   );

@@ -47,8 +47,8 @@ namespace PersonalBlog.Service
 
         private void InitializeContainer()
         {
-            var connectionString = "";
-            container.InitializeDataProvider(connectionString);
+            var connectionString = "mongodb+srv://<>:<>@cluster0.hjqxa.mongodb.net/personal_blog?retryWrites=true&w=majority";
+            container.InitializeMongoDBDataProvider(connectionString);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -23,9 +23,13 @@ namespace PersonalBlog.DataProvider.DataAccess.MSSQL
         public async Task<IEnumerable<ArticleHeader>> FetchNotSubmited()
         {
             using var connection = _dbContext.CreateDbConnection();
-            var query = @"select ArticleHeader.* from ArticleHeader 
-                          join Article on ArticleHeader.ArticleId = Article.Id";
+            var query = @"select ArticleHeader.* from ArticleHeader where Submited = true";
             return await connection.QueryAsync<ArticleHeader>(query);
+        }
+
+        public Task<ArticleHeader> Get(int id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

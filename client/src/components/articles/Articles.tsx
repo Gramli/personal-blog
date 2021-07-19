@@ -4,6 +4,7 @@ import ArticleHeaderList from "./ArticleHeadersList";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import ArticleHeader from "../../model/ArticleHeader";
+import Loading from "../ui/Loading";
 
 const Articles:React.FC = () =>{
 
@@ -20,10 +21,20 @@ const Articles:React.FC = () =>{
     fetchArticles();
   },[])
 
+  let content = <p>No Article</p>;
+
+  if (isLoading) {
+    content = <Loading/>;
+  }
+  
+  if(articles.length > 0){
+    content = <ArticleHeaderList articles={articles}/>
+  }
+
   return (
     <Container>
         <ArticleFilter onFetch={fetchArticles}/>
-        <ArticleHeaderList articles={articles}/>
+        {content}
     </Container>
     )
 }
