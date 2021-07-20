@@ -47,7 +47,7 @@ namespace PersonalBlog.Service
 
         private void InitializeContainer()
         {
-            var connectionString = "mongodb+srv://gramli:UOjcfLyefX3yi5AC@cluster0.hjqxa.mongodb.net/personal_blog?retryWrites=true&w=majority";
+            var connectionString = "mongodb+srv://gramli:@cluster0.hjqxa.mongodb.net/personal_blog?retryWrites=true&w=majority";
             container.InitializeMongoDBDataProvider(connectionString);
         }
 
