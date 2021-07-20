@@ -6,7 +6,7 @@ const AddArticle = () =>{
   return (
     <Container>
       <h3>Add New Article</h3>
-      <ArticleForm article={new ArticleContent}/>
+      <ArticleForm article={new ArticleContent()}/>
     </Container>
     )
 }

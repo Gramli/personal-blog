@@ -18,11 +18,11 @@ const Article: React.FC = () =>{
     const result = await axios.get(`https://localhost:44378/${articleId}`);
     setArticle(result.data);
     setIsLoading(false);
- }, []);
+ },[articleId]);
 
  useEffect(() =>{
   fetchArticle();
-},[])
+},[fetchArticle])
 
 let content = <p>No Article</p>;
 

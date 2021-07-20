@@ -9,7 +9,7 @@ const EditArticle: React.FC = () =>{
 
   let { articleId } = useParams<{articleId?: string}>();
 
-  const [article, setArticle] = useState(new ArticleContent);
+  const [article, setArticle] = useState(new ArticleContent());
   const [isLoading, setIsLoading] = useState(false);
 
  const fetchArticle = useCallback(async (): Promise<void> => {
@@ -17,7 +17,7 @@ const EditArticle: React.FC = () =>{
    const result = await axios.get(`https://localhost:44378/${articleId}`);
     setArticle(result.data);
     setIsLoading(false);
- }, []);
+ }, [articleId]);
 
  useEffect(() =>{
   fetchArticle();

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Button from './Button';
 
 const Card = styled.div`
     padding: 1rem;
