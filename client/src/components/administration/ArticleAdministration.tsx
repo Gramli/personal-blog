@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import ArticleHeaderList from "../articles/ArticleHeadersList";
+import ArticleHeaderList from "../article-headers/ArticleHeadersList";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 

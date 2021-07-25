@@ -1,5 +1,5 @@
 import Container from "./ui/Container";
-import ArticleHeaderList from "./articles/ArticleHeadersList";
+import ArticleHeaderList from "./article-headers/ArticleHeadersList";
 
 const Home: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import ArticleFilter from "../filter-articles/ArticleFilter";
 import Container from "../ui/Container";
-import ArticleHeaderList from "./ArticleHeadersList";
+import ArticleHeaderList from "../article-headers/ArticleHeadersList";
 import { useCallback } from "react";
 
 const Articles:React.FC = () =>{
