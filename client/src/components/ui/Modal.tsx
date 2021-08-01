@@ -16,7 +16,7 @@ const Modal  = styled.div`
   top: 30vh;
   left: 10%;
   width: 80%;
-  height: 40vh;
+  min-height: 40vh;
   z-index: 20;
   background-color: rgba(0, 0, 0, 0.75);
   animation: ${transform} 300ms ease-out forwards;;

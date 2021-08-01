@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PersonalBlog.DataModel;
 using PersonalBlog.DataProvider.DataAccess;
+using PersonalBlog.Service.DataContracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -48,16 +49,17 @@ namespace PersonalBlog.Service.Controllers
         {
 
             var article = await _articleDataAccess.GetArticle(articleId);
-            var articleHeader = await _articleHeaderDataAccess.Get(article.ArticleHeaderId);
+            var articleHeader = await _articleHeaderDataAccess.Get(article.ArticleId);
 
-            return new 
+            return new FullArticle
             {
-                article.ArticleId,
-                articleHeader.ArticleHeaderId,
-                articleHeader.Name,
-                articleHeader.Created,
-                articleHeader.Description,
-                article.Content
+                ArticleId = article.ArticleId,
+                ArticleHeaderId = articleHeader.ArticleHeaderId,
+                Name = articleHeader.Name,
+                Created = articleHeader.Created,
+                Description = articleHeader.Description,
+                Content = article.Content,
+                Submited = articleHeader.Submited,
             };
         }
     }

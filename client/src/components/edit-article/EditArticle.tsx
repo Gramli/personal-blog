@@ -4,6 +4,7 @@ import Container from "../ui/Container";
 import ArticleForm from "../article-forms/ArticleForm";
 import { useParams } from "react-router";
 import ArticleContent from "../../model/ArticleContent";
+import Article from "../../model/Article";
 
 const EditArticle: React.FC = () =>{
 
@@ -23,6 +24,10 @@ const EditArticle: React.FC = () =>{
   fetchArticle();
 },[fetchArticle])
 
+const onSubmitHandler = (article: Article) => {
+
+}
+
 let content = <p>No Articles</p>;
 
 if (isLoading) {
@@ -30,7 +35,7 @@ if (isLoading) {
 }
 
 if(article){
-  content = <ArticleForm article={article}/>
+  content = <ArticleForm onSubmit={onSubmitHandler} article={article}/>
 }
 
   return (

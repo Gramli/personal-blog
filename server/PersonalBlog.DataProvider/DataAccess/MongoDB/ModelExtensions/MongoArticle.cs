@@ -8,5 +8,12 @@ namespace PersonalBlog.DataProvider.DataAccess.MongoDB.ModelExtensions
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId _id { get; set; }
+
+        public MongoArticle(Article article)
+        {
+            _id = ObjectId.GenerateNewId();
+            ArticleId = article.ArticleId;
+            Content = article.Content;
+        }
     }
 }

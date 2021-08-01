@@ -17,5 +17,10 @@ namespace PersonalBlog.DataProvider.DataAccess.MSSQL
             var query = "select * from Article where Id = @id";
             return await connection.QueryFirstAsync<Article>(query, new { Id = articleId });
         }
+
+        Task<int> IArticleDataAccess.AddArticle(Article article)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

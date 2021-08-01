@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { MutableRefObject, useContext, useRef } from "react";
 import { useState } from "react";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
@@ -8,14 +8,14 @@ import Container from "../ui/Container";
 import Input from "../ui/Input";
 import Label from "../ui/Label";
 import Section from "../ui/Section";
+import {LoginContext} from "../../context/LoginContext";
 
 const Login: React.FC = () =>{
 
-    const [isLogged, setIsLogged] = useState(false);
+    const loginCtx = useContext(LoginContext);
 
-
-    const passwRef = useRef<HTMLInputElement>();
-    const emailRef = useRef<HTMLInputElement>();
+    const passwRef = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
+    const emailRef = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
 
 
     const submitHanlder = async (event:React.FormEvent) => {
@@ -24,27 +24,16 @@ const Login: React.FC = () =>{
         const enteredEmail= emailRef.current?.value;
         const enteredPassw= passwRef.current?.value;
 
-        //add validation
-        try{
-        const {status, data} = await axios.post('', {
-                email: enteredEmail,
-                password: enteredPassw,
-                returnSecureToken: true,
-            });
-
-            if(status === 200){
-
-                setIsLogged(true);
-                console.log(data);
-            }
-        }
-        catch(error){
-            console.log(error);
+        if(enteredEmail != undefined && enteredPassw != undefined){
+            loginCtx.logIn(enteredEmail, enteredPassw);
         }
     };
 
+    let content = (<Center><h1>Successfuly logged</h1></Center>);
 
-    return <Container center={true}>
+    if(!loginCtx.logged){
+        content = (
+        <>
         <Center>
             <h1>Login Page</h1>
         </Center>
@@ -63,6 +52,11 @@ const Login: React.FC = () =>{
                 </Center>
             </form>
         </Card>
+        </>);
+    }
+
+    return <Container center={true}>
+        {content}
     </Container>
 };
 

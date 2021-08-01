@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const Label = styled.label`
+interface LabelProps{
+    align?:string,
+}
+
+const Label = styled.label<LabelProps>`
     font-weight: bold;
     width: 40%;
     display: inline-block;

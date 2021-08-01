@@ -44,7 +44,7 @@ namespace PersonalBlog.Service
                     .AddControllerActivation();
             });
 
-            System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\github\blog-project.json");
+            System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"E:\GitHub\presonal_blog_key\blog-project.json");
 
             FirebaseApp.Create(new AppOptions()
             {

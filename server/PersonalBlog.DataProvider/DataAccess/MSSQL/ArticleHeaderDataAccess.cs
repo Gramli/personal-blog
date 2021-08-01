@@ -13,6 +13,11 @@ namespace PersonalBlog.DataProvider.DataAccess.MSSQL
 
         }
 
+        public Task AddArticleHeader(ArticleHeader articleHeader)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<IEnumerable<ArticleHeader>> Fetch()
         {
             using var connection = _dbContext.CreateDbConnection();

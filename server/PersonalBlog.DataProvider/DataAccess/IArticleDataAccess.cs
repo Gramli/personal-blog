@@ -6,5 +6,6 @@ namespace PersonalBlog.DataProvider.DataAccess
     public interface IArticleDataAccess
     {
         Task<Article> GetArticle(int articleId);
+        Task<int> AddArticle(Article article);
     }
 }

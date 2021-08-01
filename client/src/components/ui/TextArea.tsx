@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const TextArea = styled.textarea`
+interface TextAreaProps{
+    height?: string
+} 
+
+const TextArea = styled.textarea<TextAreaProps>`
     font-weight: bold;
     margin-bottom: 1em;
     width: 100%;

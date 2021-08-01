@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/navigation/Header';
 import Home from './components/Home';
@@ -8,9 +7,11 @@ import AddArticle from './components/add-article/AddArticle';
 import ArticleAdministration from './components/administration/ArticleAdministration';
 import EditArticle from './components/edit-article/EditArticle';
 import Login from './components/login/Login';
+import LoginContextProvider from './context/LoginContext';
 
 const App: React.FC = ()=> {
   return (
+    <LoginContextProvider>
       <BrowserRouter>
         <Header/>
         <Switch>
@@ -37,6 +38,7 @@ const App: React.FC = ()=> {
           </Route>
         </Switch>
       </BrowserRouter>
+      </LoginContextProvider>
   );
 }
 

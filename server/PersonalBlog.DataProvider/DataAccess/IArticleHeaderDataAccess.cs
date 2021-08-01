@@ -8,6 +8,7 @@ namespace PersonalBlog.DataProvider.DataAccess
     {
         Task<IEnumerable<ArticleHeader>> Fetch();
         Task<IEnumerable<ArticleHeader>> FetchNotSubmited();
-        Task<ArticleHeader> Get(int id);
+        Task<ArticleHeader> Get(int articleId);
+        Task AddArticleHeader(ArticleHeader articleHeader);
     }
 }
